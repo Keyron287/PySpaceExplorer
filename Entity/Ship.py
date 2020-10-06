@@ -1,6 +1,6 @@
 from typing import final
 
-from Entity.Ship_AI import Ship_AI
+from Entity.Ship_Parts import AI, Hull
 from Entity.Space_Entity import Space_entity
 from Tick_Subjected import Tick_subjected
 
@@ -10,11 +10,11 @@ class Ship(Space_entity, Tick_subjected):
 
     def __init__(self):
         super().__init__()
-        self._ai: Ship_AI = None
-        self._hull = None
-        self._battery = None
-        self._propulsion = None
+        self._ai: AI
+        self._hull: Hull
+        self._battery = self.hull.battery
         self._components = []
+        self._cargo = []
 
     @property
     def ai(self):
@@ -33,24 +33,27 @@ class Ship(Space_entity, Tick_subjected):
         self._hull = value
 
     @property
-    def generator(self):
+    def battery(self):
         return self._battery
 
     @property
-    def propulsion(self):
-        return self._propulsion
-
-    @propulsion.setter
-    def propulsion(self, value):
-        self._propulsion = value
+    def cargo(self):
+        return self._cargo
 
     def add_component(self, component):
-        if len(self._components) < self._hull.max_components:
+        if len(self._components) + component.size < self._hull.max_components:
             component.parent = self
             self._components.append(component)
 
     def rem_component(self, component):
         self._components.remove(component)
+
+    def push_cargo(self, cargo: Space_entity):
+        if len(self._components) + cargo.size < self._hull.max_cargo:
+            self.cargo.append(cargo)
+
+    def pop_cargo(self):
+        return self.cargo.pop(-1)
 
     def begin_tick(self):
         self._ai.begin_tick()
