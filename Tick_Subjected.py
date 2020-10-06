@@ -2,7 +2,9 @@ from abc import ABC, abstractmethod
 from typing import List, final
 
 
-class Tick_action:
+class Tick_action(ABC):
+
+    @abstractmethod
     def execute(self):
         pass
 
@@ -22,6 +24,7 @@ class Tick_subjected(ABC):
     def begin_tick(self):
         pass
 
+    # Final impedisce che un metodo sia sovrascritto
     @final
     def tick(self):
         self.begin_tick()
