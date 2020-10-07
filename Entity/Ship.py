@@ -1,5 +1,6 @@
-from typing import final
+from typing import final, List
 
+from Entity.Component import Component
 from Entity.Ship_Parts import AI, Hull
 from Entity.Space_Entity import Space_entity
 from Tick_Subjected import Tick_subjected
@@ -12,9 +13,10 @@ class Ship(Space_entity, Tick_subjected):
         super().__init__()
         self._ai: AI
         self._hull: Hull
-        self._battery = self.hull.battery
-        self._components = []
-        self._cargo = []
+        self.size = self._hull.size
+        self._battery: float = self.hull.battery
+        self._components: List[Component] = []
+        self._cargo: List[Space_entity] = []
 
     @property
     def ai(self):
@@ -39,6 +41,10 @@ class Ship(Space_entity, Tick_subjected):
     @property
     def cargo(self):
         return self._cargo
+
+    @property
+    def components(self):
+        return self._components
 
     def add_component(self, component):
         if len(self._components) + component.size < self._hull.max_components:

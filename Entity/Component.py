@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
-
 from typing import List
-
 from Tick_Subjected import Tick_action
 
 
@@ -40,4 +38,7 @@ class Cluster_component(Component):
         return r
 
     def use(self, *param) -> List[Tick_action]:
-        pass
+        r = []
+        for a in self.childs:
+            r += a.use(param)
+        return r

@@ -1,7 +1,4 @@
 from enum import Enum
-
-from typing import Tuple
-
 from Space_System import Space_system
 
 
