@@ -15,8 +15,8 @@ class Coordinate(Enum):
 class Space_entity:
 
     def __init__(self):
-        self.system: Space_system = None
-        self.position_zero: Space_entity = None
+        self.system: Space_system
+        self.position_zero: Space_entity
         self.coordinates: Coordinate = Coordinate.Space
         self.size: int = 0
         self.tempreature: float = 0

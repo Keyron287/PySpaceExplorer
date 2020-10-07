@@ -29,7 +29,8 @@ class Tick_subjected(ABC):
     def tick(self):
         self.begin_tick()
         action = self.actions.pop(0)
-        action.execute()
+        for a in action:
+            a.execute()
         self.end_tick()
 
     @abstractmethod
