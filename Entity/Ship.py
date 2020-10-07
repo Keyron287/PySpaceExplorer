@@ -10,13 +10,12 @@ from Tick_Subjected import Tick_subjected
 class Ship(Space_entity, Tick_subjected):
 
     def __init__(self):
-        super().__init__()
         self._ai: AI
         self._hull: Hull
-        self.size = self._hull.size
         self._battery: float = self.hull.battery
         self._components: List[Component] = []
         self._cargo: List[Space_entity] = []
+        super().__init__(None, None, size=self._hull.size, temperature=self._hull.temperature)
 
     @property
     def ai(self):
