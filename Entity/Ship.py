@@ -15,7 +15,8 @@ class Ship(Space_entity, Tick_subjected):
         self._battery: float = self.hull.battery
         self._components: List[Component] = []
         self._cargo: List[Space_entity] = []
-        super().__init__(None, None, size=self._hull.size, temperature=self._hull.temperature)
+        super().__init__(size=self._hull.size, temperature=self._hull.temperature,
+                         accessible_coordinates=self._hull.valid_coordinates)
 
     @property
     def ai(self):

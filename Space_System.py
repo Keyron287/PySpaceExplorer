@@ -1,6 +1,9 @@
+from math import floor
+from random import randrange, random
 from typing import List
 
-from Entity.Space_Entity import Space_entity
+from Entity.Celestial_bodies import Star, Planet, Moon, Asteroids, Celestial_body
+from Entity.Space_Entity import Coordinate, Space_entity
 
 
 class Space_system:
@@ -12,11 +15,72 @@ class Space_system:
         self.connections: List[Space_system] = []
         self.__generate()
 
-    def __generate(self):
-        pass
+    @property
+    def planets(self):
+        return list(self.map.keys())
 
-    def enter_system(self, entity):
-        pass
+    def __generate(self):
+        bodies = randrange(1, 15)
+
+        for a in range(bodies):
+            gauss = (random()+random())/2
+            gauss = floor(gauss*3.99)
+            b = None
+            if gauss == 0 or a == 0:
+                b = Star()
+            elif gauss == 1:
+                b = Planet()
+            elif gauss == 2:
+                b = Moon()
+            elif gauss == 3:
+                b = Asteroids()
+            self.map[b] = [[], [], []]
+
+    def enter_system(self, entity: Space_entity):
+        entity.system.exit_system(entity)
+        self.map[self.planets[0]][Coordinate.Space].append(entity)
+        entity.position = (self.planets[0], Coordinate.Space)
 
     def exit_system(self, entity):
-        pass
+        system = entity.system.map
+        coord = entity.position
+        system[coord[0]][coord[1]].remove(entity)
+
+    def flight(self, ship, ascend=None, away=None):
+        old_coordinates = ship.position
+        new_body: Celestial_body = old_coordinates[0]
+        new_coordinate = old_coordinates[1]
+        body_index = list(self.map.keys()).index(new_body)
+
+        if ascend is not None and ascend:
+            if new_coordinate.value + 1 > Coordinate.Space.value:
+                raise Exception("Invalid position, outer space")
+            else:
+                nc = Coordinate(new_coordinate.value+1)
+                if nc in ship.accessible_coordinates:
+                    new_coordinate = nc
+                else:
+                    raise Exception("Inaccessibile dalla nave")
+        elif ascend is not None and not ascend:
+            if new_coordinate.value - 1 < Coordinate.Landed.value:
+                raise Exception("Invalid position, underground")
+            else:
+                nc = Coordinate(new_coordinate.value - 1)
+                if nc in ship.accessible_coordinates:
+                    new_coordinate = nc
+                else:
+                    raise Exception("Inaccessibile dalla nave")
+        if away is not None and away and new_coordinate == Coordinate.space:
+            if body_index + 1 >= len(self.map):
+                raise Exception("Invalid position, out of system! out of bounds+")
+            else:
+                new_body = self.planets[body_index+1]
+        elif away is not None and not away and new_coordinate == Coordinate.space:
+            if body_index - 1 < 0:
+                raise Exception("Invalid position, out of system! out of bounds-")
+            else:
+                new_body = self.planets[body_index-1]
+
+        self.map[old_coordinates[0]][old_coordinates[1]].remove(ship)
+        self.map[new_body][new_coordinate].append(ship)
+        ship.position = (new_body, new_coordinate)
