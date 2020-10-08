@@ -77,5 +77,7 @@ class Space_system:
 
         ship.position = (new_body, new_coordinate)
 
-    def get_sector_entities(self, coord: Tuple[Celestial_body, Coordinate]) -> List[Space_entity]:
-        return list(filter(lambda x: x.position[0] == coord[0] and x.position[1] == coord[1], self.entities))
+    def get_sector_entities(self, coord: Tuple[Celestial_body, Coordinate], exclude=None) -> List[Space_entity]:
+        return list(filter(lambda x: x.position[0] == coord[0] and x.position[1] == coord[1] and x != exclude,
+                           self.entities))
+
