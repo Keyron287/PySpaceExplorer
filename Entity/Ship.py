@@ -10,25 +10,6 @@ from Tick_Subjected import Tick_subjected, Tick_action
 @final
 class Ship(Space_entity, Tick_subjected):
 
-    class Fly(Tick_action):
-
-        def __init__(self, ship: Space_entity, ascend=None, away=None):
-            self.ship = ship
-            self.ascend = ascend
-            self.away = away
-
-        def execute(self):
-            self.ship.system.flight(self.ship, self.ascend, self.away)
-
-    class Warp(Tick_action):
-
-        def __init__(self, ship: Space_entity, destination: Space_system):
-            self.ship = ship
-            self.destination = destination
-
-        def execute(self):
-            self.destination.enter_system(self.ship)
-
     def __init__(self):
         self._ai: AI
         self._hull: Hull
