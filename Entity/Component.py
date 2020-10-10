@@ -5,6 +5,9 @@ from Tick_Subjected import Tick_action
 
 class Component(ABC):
 
+    def __init__(self, parent):
+        self.parent = parent
+
     @abstractmethod
     def get_size(self) -> int:
         return 1
@@ -20,7 +23,8 @@ class Component(ABC):
 
 class Cluster_component(Component):
 
-    def __init__(self, *components: Component):
+    def __init__(self, parent, *components: Component):
+        super().__init__(parent)
         self.childs: List[Component] = []
         for a in components:
             self.childs.append(a)

@@ -36,5 +36,3 @@ class Atlas(Hull):
 
     def __init__(self):
         super().__init__(100, 20, 1000, (Coordinate.Space,), 1000, 0)
-
-

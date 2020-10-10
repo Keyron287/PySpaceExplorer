@@ -3,12 +3,17 @@ from typing import final, List
 from Entity.Component import Component
 from Entity.Ship_Parts import AI, Hull
 from Entity.Space_Entity import Space_entity
-from Space_System import Space_system
-from Tick_Subjected import Tick_subjected, Tick_action
+from Tick_Subjected import Tick_subjected
+
+
+class Battery_Exception(Exception):
+    def __init__(self, message):
+        super().__init__(message)
 
 
 @final
 class Ship(Space_entity, Tick_subjected):
+
 
     def __init__(self):
         self._ai: AI
@@ -37,7 +42,7 @@ class Ship(Space_entity, Tick_subjected):
 
     @property
     def battery(self):
-        return self._battery
+        return self._battery, self._hull.battery
 
     @property
     def cargo(self):
@@ -58,6 +63,15 @@ class Ship(Space_entity, Tick_subjected):
     def push_cargo(self, cargo: Space_entity):
         if len(self._components) + cargo.size < self._hull.max_cargo:
             self.cargo.append(cargo)
+
+    def use_battery(self, quantity):
+        if quantity < self._battery:
+            raise Battery_Exception("Insufficient Energy")
+        else:
+            self._battery -= quantity
+
+    def charge_battery(self, quantity):
+        self._battery = min(self._hull.battery, self._battery+quantity)
 
     def pop_cargo(self):
         return self.cargo.pop(-1)
