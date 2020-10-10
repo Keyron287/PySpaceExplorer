@@ -21,4 +21,3 @@ class Space_entity:
         self.tempreature: float = temperature
         self.resources: dict = resources
         self.accessible_coordinates = accessible_coordinates
-

@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import List
 
 from Entity.Celestial_bodies import Star, Resources, Celestial_body
 from Entity.Component import Component
@@ -30,8 +30,8 @@ class Charge_battery(Tick_action):
 
 
 class Power_Bank(Component):
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self):
+        super().__init__()
         self.energy = 10
 
     def get_size(self) -> int:
@@ -49,8 +49,8 @@ class Power_Bank(Component):
 
 class Plug(Component):
 
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self):
+        super().__init__()
         self.energy_tranfer = 5
 
     def get_size(self) -> int:
@@ -67,9 +67,6 @@ class Plug(Component):
 
 
 class Solar_panel(Component):
-
-    def __init__(self, parent):
-        super().__init__(parent)
 
     def calculate_output(self, system: Space_system):
         ll = 0
@@ -90,9 +87,6 @@ class Solar_panel(Component):
 
 
 class Thermoelectric_generator(Component):
-
-    def __init__(self, parent):
-        super().__init__(parent)
 
     def calculate_output(self, coord: tuple):
         body: Celestial_body = coord[0]

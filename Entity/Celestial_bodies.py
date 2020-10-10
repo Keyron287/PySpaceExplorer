@@ -3,13 +3,6 @@ from random import randrange
 from Entity.Space_Entity import Space_entity
 
 
-class Resources(Enum):
-    Light = 0
-    Metal = 1
-    Energy = 2
-    Radiation = 3
-
-
 class Celestial_body(Space_entity):
 
     def __init__(self, name, orbit=None):

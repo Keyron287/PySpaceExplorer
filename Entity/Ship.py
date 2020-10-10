@@ -14,7 +14,6 @@ class Battery_Exception(Exception):
 @final
 class Ship(Space_entity, Tick_subjected):
 
-
     def __init__(self):
         self._ai: AI
         self._hull: Hull
@@ -64,6 +63,9 @@ class Ship(Space_entity, Tick_subjected):
         if len(self._components) + cargo.size < self._hull.max_cargo:
             self.cargo.append(cargo)
 
+    def pop_cargo(self):
+        return self.cargo.pop(-1)
+
     def use_battery(self, quantity):
         if quantity < self._battery:
             raise Battery_Exception("Insufficient Energy")
@@ -73,21 +75,14 @@ class Ship(Space_entity, Tick_subjected):
     def charge_battery(self, quantity):
         self._battery = min(self._hull.battery, self._battery+quantity)
 
-    def pop_cargo(self):
-        return self.cargo.pop(-1)
-
     def begin_tick(self):
         self._ai.begin_tick()
-        pass
 
     def end_tick(self):
         self._ai.end_tick()
-        pass
 
     def on_born(self):
         self._ai.on_born()
-        pass
 
     def on_death(self):
         self._ai.on_death()
-        pass
