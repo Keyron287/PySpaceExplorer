@@ -30,7 +30,10 @@ class Tick_subjected(ABC):
         self.begin_tick()
         action = self.actions.pop(0)
         for a in action:
-            a.execute()
+            try:
+                a.execute()
+            except Exception as err:
+                print("Errore:", err)
         self.end_tick()
 
     @abstractmethod

@@ -62,6 +62,8 @@ class Ship(Space_entity, Tick_subjected):
     def push_cargo(self, cargo: Space_entity):
         if len(self._components) + cargo.size < self._hull.max_cargo:
             self.cargo.append(cargo)
+        else:
+            raise Exception("Cargo is full!")
 
     def pop_cargo(self):
         return self.cargo.pop(-1)
