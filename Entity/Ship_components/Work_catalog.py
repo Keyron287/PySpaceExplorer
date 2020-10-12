@@ -49,6 +49,7 @@ class Build_ship(Tick_action):
         self.project = project
 
     def execute(self):
+        pass
 
 
 
@@ -90,7 +91,7 @@ class Builder(Component):
         return 10
 
     def get_energy_usage(self) -> float:
-        return self.project.build_energy
+        return self.project.build_energy()
 
     def use(self) -> List[Tick_action]:
         return []
