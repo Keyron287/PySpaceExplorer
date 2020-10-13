@@ -2,7 +2,7 @@ from typing import final, List
 
 from Component import Component
 from Ship_Parts import AI, Hull
-from Space_Entity import Space_entity
+from Space_Entity import Space_Entity
 from Tick_Subjected import Tick_subjected
 
 
@@ -12,14 +12,14 @@ class Battery_Exception(Exception):
 
 
 @final
-class Ship(Space_entity, Tick_subjected):
+class Ship(Space_Entity, Tick_subjected):
 
-    def __init__(self):
-        self._ai: AI
-        self._hull: Hull
+    def __init__(self, ai, hull):
+        self._ai: AI = ai
+        self._hull: Hull = hull
         self._battery: float = self.hull.battery
         self._components: List[Component] = []
-        self._cargo: List[Space_entity] = []
+        self._cargo: List[Space_Entity] = []
         super().__init__(size=self._hull.size, temperature=self._hull.temperature,
                          accessible_coordinates=self._hull.valid_coordinates)
 
@@ -59,7 +59,7 @@ class Ship(Space_entity, Tick_subjected):
     def rem_component(self, component):
         self._components.remove(component)
 
-    def push_cargo(self, cargo: Space_entity):
+    def push_cargo(self, cargo: Space_Entity):
         if len(self._components) + cargo.size < self._hull.max_cargo:
             self.cargo.append(cargo)
         else:

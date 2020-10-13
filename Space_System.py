@@ -2,16 +2,16 @@ from math import floor
 from random import randrange, random
 from typing import List, Tuple
 
-from Celestial_bodies import Star, Planet, Moon, Asteroids
-from Space_Entity import Coordinate, Space_entity, Celestial_body
+from Celestial_bodies import Star, Planet, Moon, Asteroids, Celestial_body
+from Space_Entity import Coordinate, Space_Entity
 
 
 class Space_system:
 
     def __init__(self):
-        self.planets: List[Celestial_body] = []
-        self.entities: List[Space_entity] = []
-        self.connections: List[Space_system] = []
+        self.planets = []
+        self.entities = []
+        self.connections = []
         self.__generate()
 
     def __generate(self):
@@ -31,8 +31,9 @@ class Space_system:
                 b = Asteroids()
             self.planets.append(b)
 
-    def enter_system(self, entity: Space_entity, position: tuple = None):
-        entity.system.exit_system(entity)
+    def enter_system(self, entity: Space_Entity, position: tuple = None):
+        if entity.system is not None:
+            entity.system.exit_system(entity)
         self.entities.append(entity)
         entity.position = position or (self.planets[0], Coordinate.Space)
 
@@ -77,7 +78,7 @@ class Space_system:
 
         ship.position = (new_body, new_coordinate)
 
-    def get_sector_entities(self, coord: Tuple[Celestial_body, Coordinate], exclude=None) -> List[Space_entity]:
+    def get_sector_entities(self, coord: Tuple[Celestial_body, Coordinate], exclude=None) -> List[Space_Entity]:
         return list(filter(lambda x: x.position[0] == coord[0] and x.position[1] == coord[1] and x != exclude,
                            self.entities))
 

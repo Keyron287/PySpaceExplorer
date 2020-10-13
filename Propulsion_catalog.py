@@ -1,14 +1,14 @@
 from typing import List
 
 from Component import Component
-from Space_Entity import Space_entity
+from Space_Entity import Space_Entity
 from Space_System import Space_system
 from Tick_Subjected import Tick_action
 
 
 class Fly(Tick_action):
 
-    def __init__(self, ship: Space_entity, ascend=None, away=None):
+    def __init__(self, ship: Space_Entity, ascend=None, away=None):
         self.ship = ship
         self.ascend = ascend
         self.away = away
@@ -19,7 +19,7 @@ class Fly(Tick_action):
 
 class Warp(Tick_action):
 
-    def __init__(self, ship: Space_entity, destination: Space_system):
+    def __init__(self, ship: Space_Entity, destination: Space_system):
         self.ship = ship
         self.destination = destination
 
