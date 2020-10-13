@@ -9,13 +9,21 @@ class Tick_action(ABC):
         pass
 
 
+class Delay(Tick_action):
+
+    def execute(self):
+        pass
+
+
 class Tick_subjected(ABC):
 
     def __init__(self):
         self.actions: List[Tick_action] = []
 
-    def add_action(self, action: Tick_action, duration: int = 1, priority: int = -1):
-        pass
+    def add_action(self, action: Tick_action, duration: int = 1):
+        for a in range(duration-1):
+            self.actions.append(Delay())
+        self.actions.append(action)
 
     def rem_action(self, action: Tick_action):
         pass
