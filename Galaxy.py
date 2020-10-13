@@ -8,6 +8,11 @@ class Galaxy:
 
     galaxy_map: List[Space_system] = None
 
+    def create_system(self):
+        n = Space_system()
+        self.galaxy_map.append(n)
+        self.generate_system_connections(n)
+
     def generate_system_connections(self, start_system: Space_system):
         connections = min(randrange(0, 3), 3-len(start_system.connections))
         for a in range(connections):
