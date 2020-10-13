@@ -1,13 +1,7 @@
-from enum import Enum
 from random import randrange
-from Entity.Space_Entity import Space_entity
 
-
-class Celestial_body(Space_entity):
-
-    def __init__(self, name, orbit=None):
-        super().__init__(name)
-        self.orbit = orbit
+from Resources import Resources
+from Space_Entity import Celestial_body
 
 
 class Star(Celestial_body):

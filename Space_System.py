@@ -2,8 +2,8 @@ from math import floor
 from random import randrange, random
 from typing import List, Tuple
 
-from Entity.Celestial_bodies import Star, Planet, Moon, Asteroids, Celestial_body
-from Entity.Space_Entity import Coordinate, Space_entity
+from Celestial_bodies import Star, Planet, Moon, Asteroids
+from Space_Entity import Coordinate, Space_entity, Celestial_body
 
 
 class Space_system:

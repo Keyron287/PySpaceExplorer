@@ -1,7 +1,7 @@
 from typing import List
 
-from Entity.Celestial_bodies import Resources
-from Entity.Component import Component
+from Celestial_bodies import Resources
+from Component import Component
 from Tick_Subjected import Tick_action
 
 

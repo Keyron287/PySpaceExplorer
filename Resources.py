@@ -1,6 +1,6 @@
 from enum import Enum
 
-from Entity.Space_Entity import Space_entity
+from Space_Entity import Resource_box
 
 
 class Resources(Enum):
@@ -10,32 +10,25 @@ class Resources(Enum):
     Radiation = 3
 
 
-class Resource_box(Space_entity):
-
-    def __init__(self, base_resource: Resources):
-        super().__init__(self.__class__.__name__, size=1)
-        self.base = base_resource
-
-
 class Box_of_metal(Resource_box):
 
     def __init__(self):
         super().__init__(Resources.Metal)
 
 
-class Box_of_energy(Resource_box):
+class Box_of_energy(Entity.Space_Entity.Resource_box):
 
     def __init__(self):
         super().__init__(Resources.Energy)
 
 
-class Box_of_radiation(Resource_box):
+class Box_of_radiation(Entity.Space_Entity.Resource_box):
 
     def __init__(self):
         super().__init__(Resources.Radiation)
 
 
-class Box_of_light(Resource_box):
+class Box_of_light(Entity.Space_Entity.Resource_box):
 
     def __init__(self):
         super().__init__(Resources.Light)

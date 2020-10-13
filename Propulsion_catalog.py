@@ -1,7 +1,7 @@
 from typing import List
 
-from Entity.Component import Component
-from Entity.Space_Entity import Space_entity
+from Component import Component
+from Space_Entity import Space_entity
 from Space_System import Space_system
 from Tick_Subjected import Tick_action
 

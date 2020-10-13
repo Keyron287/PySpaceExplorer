@@ -1,8 +1,8 @@
 from typing import final, List
 
-from Entity.Component import Component
-from Entity.Ship_Parts import AI, Hull
-from Entity.Space_Entity import Space_entity
+from Component import Component
+from Ship_Parts import AI, Hull
+from Space_Entity import Space_entity
 from Tick_Subjected import Tick_subjected
 
 

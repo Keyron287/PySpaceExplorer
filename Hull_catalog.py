@@ -1,5 +1,5 @@
-from Entity.Ship_Parts import Hull
-from Entity.Space_Entity import Coordinate
+from Ship_Parts import Hull
+from Space_Entity import Coordinate
 
 
 class Ant(Hull):

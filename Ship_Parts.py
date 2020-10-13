@@ -3,8 +3,18 @@ from abc import ABC
 from Tick_Subjected import Tick_subjected
 
 
-class AI(ABC, Tick_subjected):
-    pass
+class AI(Tick_subjected):
+    def begin_tick(self):
+        pass
+
+    def end_tick(self):
+        pass
+
+    def on_born(self):
+        pass
+
+    def on_death(self):
+        pass
 
 
 class Hull(ABC):

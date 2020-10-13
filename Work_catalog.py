@@ -1,10 +1,10 @@
 from random import randrange
 from typing import List
 
-from Entity.Celestial_bodies import Star
-from Entity.Component import Component
-from Entity.Resources import Resources, Box_of_metal
-from Entity.Space_Entity import Coordinate
+from Celestial_bodies import Star
+from Component import Component
+from Resources import Resources, Box_of_metal
+from Space_Entity import Coordinate
 from Tick_Subjected import Tick_action
 
 
