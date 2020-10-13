@@ -31,10 +31,10 @@ class Space_system:
                 b = Asteroids()
             self.planets.append(b)
 
-    def enter_system(self, entity: Space_entity):
+    def enter_system(self, entity: Space_entity, position: tuple = None):
         entity.system.exit_system(entity)
         self.entities.append(entity)
-        entity.position = (self.planets[0], Coordinate.Space)
+        entity.position = position or (self.planets[0], Coordinate.Space)
 
     def exit_system(self, entity):
         system = entity.system.entities

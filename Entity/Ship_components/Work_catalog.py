@@ -49,8 +49,9 @@ class Build_ship(Tick_action):
         self.project = project
 
     def execute(self):
-        pass
-
+        self.ship.get_cargo(self.project.needed_components())
+        ship = self.project.produce_ship()
+        self.ship.system.enter_system(ship, self.ship.position)
 
 
 class Drill(Component):
@@ -83,7 +84,7 @@ class Mover(Component):
 
 class Builder(Component):
 
-    def __init__(self, project):
+    def set_project(self, project):
         super().__init__()
         self.project = project
 
@@ -94,4 +95,4 @@ class Builder(Component):
         return self.project.build_energy()
 
     def use(self) -> List[Tick_action]:
-        return []
+        return [Build_ship(self.parent, self.project)]

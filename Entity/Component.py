@@ -17,6 +17,10 @@ class Component(ABC):
         return 0.75
 
     @abstractmethod
+    def get_duration(self) -> int:
+        return 0
+
+    @abstractmethod
     def use(self, *param) -> List[Tick_action]:
         pass
 

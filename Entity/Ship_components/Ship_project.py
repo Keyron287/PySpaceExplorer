@@ -7,7 +7,7 @@ class Ship_project(ABC):
         return 1
 
     def needed_components(self):
-        return {}
+        return []
 
-    def get_ship(self):
+    def produce_ship(self):
         pass

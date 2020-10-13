@@ -68,6 +68,13 @@ class Ship(Space_entity, Tick_subjected):
     def pop_cargo(self):
         return self.cargo.pop(-1)
 
+    def get_cargo(self, needed: list):
+        if set(needed).issubset(set(self._cargo)):
+            self._cargo = [x for x in self._cargo if x not in needed]
+            return needed
+        else:
+            raise Exception("Not enough materials")
+
     def use_battery(self, quantity):
         if quantity < self._battery:
             raise Battery_Exception("Insufficient Energy")
