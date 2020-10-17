@@ -94,5 +94,8 @@ class Builder(Component):
     def get_energy_usage(self) -> float:
         return self.project.build_energy()
 
+    def get_duration(self) -> int:
+        return self.project.production_time()
+
     def use(self) -> List[Tick_action]:
         return [Build_ship(self.parent, self.project)]

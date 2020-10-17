@@ -35,6 +35,9 @@ class Flyer(Component):
     def get_energy_usage(self) -> float:
         return 5
 
+    def get_duration(self) -> int:
+        return 2
+
     def use(self, ascend, away) -> List[Tick_action]:
         return [Fly(self.parent, ascend, away)]
 
@@ -45,6 +48,9 @@ class Warper(Component):
 
     def get_energy_usage(self) -> float:
         return 50
+
+    def get_duration(self) -> int:
+        return 5
 
     def use(self, destination_system) -> List[Tick_action]:
         return [Warp(self.parent, destination_system)]

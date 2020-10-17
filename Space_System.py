@@ -4,6 +4,7 @@ from typing import List, Tuple
 
 from Celestial_bodies import Star, Planet, Moon, Asteroids, Celestial_body
 from Space_Entity import Coordinate, Space_Entity
+from Tick_Subjected import Tick_subjected
 
 
 class Space_system:
@@ -82,3 +83,5 @@ class Space_system:
         return list(filter(lambda x: x.position[0] == coord[0] and x.position[1] == coord[1] and x != exclude,
                            self.entities))
 
+    def get_tick_active(self):
+        return list(filter(lambda x: isinstance(x, Tick_subjected()), self.entities))
