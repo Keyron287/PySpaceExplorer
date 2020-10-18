@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 from typing import List
+
 from Tick_Subjected import Tick_action
 
 

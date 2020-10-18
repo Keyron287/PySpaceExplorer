@@ -8,9 +8,6 @@ from Tick_Subjected import Tick_action
 
 class Fly(Tick_action):
 
-    def msg(self) -> str:
-        return "Flying"
-
     def __init__(self, ship: Space_Entity, ascend=None, away=None):
         self.ship = ship
         self.ascend = ascend
@@ -18,6 +15,9 @@ class Fly(Tick_action):
 
     def execute(self):
         self.ship.fly(self.ascend, self.away)
+
+    def msg(self) -> str:
+        return "Flying"
 
 
 class Warp(Tick_action):

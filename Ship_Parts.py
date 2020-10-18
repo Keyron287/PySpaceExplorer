@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
 
-from Tick_Subjected import Tick_subjected
-
 
 class AI(ABC):
 

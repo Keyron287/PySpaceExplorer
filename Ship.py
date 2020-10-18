@@ -26,12 +26,12 @@ class Ship(Space_Entity):
     @property
     def current_action_msg(self):
         try:
-            return self.current_action[0].msg()
+            return self.current_action.msg()
         except AttributeError:
             return "Nothing"
 
     def __repr__(self):
-        return self._hull.__class__.__name__ + "(" + self.ai.ai_pourpose() + ")"
+        return self._hull.__class__.__name__ + "(" + self.ai.ai_pourpose() + ")["+self.current_action_msg+"]"
 
     @property
     def ai(self):
