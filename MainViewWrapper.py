@@ -1,15 +1,16 @@
 from PyQt5 import QtWidgets
 
-from MainView import MainView
+from MainView import Ui_MainWindow
 from Space_Entity import Coordinate
 
 
 class MainViewWrapper:
 
-    def __init__(self):
-        self.mv = MainView()
+    def __init__(self, ticker):
+        self.mv = Ui_MainWindow()
         self.MainWindow = QtWidgets.QMainWindow()
         self.map = []
+        self.ticker = ticker
 
     def show(self):
         self.mv.setupUi(self.MainWindow)
@@ -21,6 +22,7 @@ class MainViewWrapper:
         self.mv.Planets.currentRowChanged.connect(lambda: self.show_space())
         self.mv.Planets.currentRowChanged.connect(lambda: self.show_orbit())
         self.mv.Planets.currentRowChanged.connect(lambda: self.show_land())
+        self.mv.next_tick.clicked.connect(lambda: self.tick())
 
     @property
     def selected_system(self):
@@ -37,8 +39,20 @@ class MainViewWrapper:
             item.setText(str(ls))
             lst_widget.addItem(item)
 
-    def show_systems(self, systems):
-        self.map = systems
+    def tick(self):
+        last_system = self.mv.Systems.currentRow()
+        last_planet = self.mv.Planets.currentRow()
+        self.ticker.execute_tick()
+        self.show_systems()
+        self.mv.Systems.setCurrentRow(last_system)
+        self.show_planets()
+        self.mv.Planets.setCurrentRow(last_planet)
+        self.show_space()
+        self.show_orbit()
+        self.show_land()
+
+    def show_systems(self, systems=None):
+        self.map = systems or self.map
         self.__show_list(self.mv.Systems, self.map)
 
     def show_planets(self):

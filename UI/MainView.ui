@@ -15,7 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="QWidget" name="widget" native="true">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
@@ -36,18 +36,12 @@
           <item>
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>Systems</string>
+             <string>Galaxy</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QListWidget" name="Systems">
-            <item>
-             <property name="text">
-              <string>Systems</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QListWidget" name="Systems"/>
           </item>
          </layout>
         </widget>
@@ -70,18 +64,12 @@
           <item>
            <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>Planets</string>
+             <string>System</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QListWidget" name="Planets">
-            <item>
-             <property name="text">
-              <string>Planets</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QListWidget" name="Planets"/>
           </item>
          </layout>
         </widget>
@@ -109,13 +97,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QListWidget" name="Space">
-            <item>
-             <property name="text">
-              <string>Space</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QListWidget" name="Space"/>
           </item>
           <item>
            <widget class="QLabel" name="label_4">
@@ -125,13 +107,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QListWidget" name="Orbit">
-            <item>
-             <property name="text">
-              <string>Orbit</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QListWidget" name="Orbit"/>
           </item>
           <item>
            <widget class="QLabel" name="label_5">
@@ -141,15 +117,22 @@
            </widget>
           </item>
           <item>
-           <widget class="QListWidget" name="Landed">
-            <item>
-             <property name="text">
-              <string>Land</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QListWidget" name="Landed"/>
           </item>
          </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QWidget" name="widget_5" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="next_tick">
+         <property name="text">
+          <string>Tick</string>
+         </property>
         </widget>
        </item>
       </layout>

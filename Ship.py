@@ -23,7 +23,6 @@ class Ship(Space_Entity):
         super().__init__(size=self._hull.size, temperature=self._hull.temperature,
                          accessible_coordinates=self._hull.valid_coordinates)
 
-
     @property
     def current_action_msg(self):
         try:
@@ -108,6 +107,9 @@ class Ship(Space_Entity):
 
     def charge_battery(self, quantity):
         self._battery = min(self._hull.battery, self._battery + quantity)
+
+    def fly(self, ascend=None, away=None):
+        self.system.flight(self, ascend, away)
 
     def begin_tick(self):
         self._ai.begin_tick()

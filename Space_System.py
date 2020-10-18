@@ -14,12 +14,14 @@ class Space_system:
         self.entities = []
         self.connections = []
         self.__generate()
-
-    def __repr__(self):
         stars = len(list(filter(lambda x: isinstance(x, Star), self.planets)))
         planets = len(list(filter(lambda x: isinstance(x, Planet), self.planets)))
         moons = len(list(filter(lambda x: isinstance(x, Moon), self.planets)))
-        return "System "+str(stars)+str(planets)+str(moons)+choice(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"])
+        self.name = "System " + str(stars) + str(planets) + str(moons) + choice(
+            ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"])
+
+    def __repr__(self):
+        return self.name
 
     def __generate(self):
         bodies = randrange(1, 10)
@@ -42,6 +44,7 @@ class Space_system:
         if entity.system is not None:
             entity.system.exit_system(entity)
         self.entities.append(entity)
+        entity.system = self
         entity.position = position or (self.planets[0], Coordinate.Space)
 
     def exit_system(self, entity):

@@ -48,11 +48,11 @@ class Tick_subjected(ABC):
         self.begin_tick()
         action = self.actions.pop(0)
         for a in action:
-            try:
+            #try:
                 self.current_action = a
                 a.execute()
-            except Exception as err:
-                print("Errore:", err)
+            #except Exception as err:
+             #   print("Errore:", err)
         self.end_tick()
 
     def end_tick(self):

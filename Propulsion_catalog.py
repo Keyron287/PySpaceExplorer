@@ -17,7 +17,7 @@ class Fly(Tick_action):
         self.away = away
 
     def execute(self):
-        self.ship.system.flight(self.ship, self.ascend, self.away)
+        self.ship.fly(self.ascend, self.away)
 
 
 class Warp(Tick_action):
