@@ -15,8 +15,14 @@ class Space_system:
         self.connections = []
         self.__generate()
 
+    def __repr__(self):
+        stars = len(list(filter(lambda x: isinstance(x, Star), self.planets)))
+        planets = len(list(filter(lambda x: isinstance(x, Planet), self.planets)))
+        moons = len(list(filter(lambda x: isinstance(x, Moon), self.planets)))
+        return "System "+str(stars)+str(planets)+str(moons)
+
     def __generate(self):
-        bodies = randrange(1, 15)
+        bodies = randrange(1, 10)
 
         for a in range(bodies):
             gauss = (random() + random()) / 2
@@ -84,4 +90,4 @@ class Space_system:
                            self.entities))
 
     def get_tick_active(self):
-        return list(filter(lambda x: isinstance(x, Tick_subjected()), self.entities))
+        return list(filter(lambda x: isinstance(x, Tick_subjected), self.entities))

@@ -23,6 +23,9 @@ class Ship(Space_Entity, Tick_subjected):
         super().__init__(size=self._hull.size, temperature=self._hull.temperature,
                          accessible_coordinates=self._hull.valid_coordinates)
 
+    def __repr__(self):
+        return self._hull.__class__.__name__
+
     @property
     def ai(self):
         return self._ai
