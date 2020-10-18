@@ -1,7 +1,8 @@
 from typing import List
 
-from Celestial_bodies import Star, Resources, Celestial_body
+from Celestial_bodies import Star, Celestial_body
 from Component import Component
+from Resources import Resources
 from Space_Entity import Coordinate
 from Space_System import Space_system
 from Tick_Subjected import Tick_action

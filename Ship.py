@@ -1,6 +1,6 @@
 from typing import final, List
 
-from Component import Component
+from Component import Component, Category
 from Ship_Parts import AI, Hull
 from Space_Entity import Space_Entity
 from Tick_Subjected import Tick_subjected
@@ -16,6 +16,7 @@ class Ship(Space_Entity, Tick_subjected):
 
     def __init__(self, ai, hull):
         self._ai: AI = ai
+        self._ai.ship = self
         self._hull: Hull = hull
         self._battery: float = self.hull.battery
         self._components: List[Component] = []
@@ -23,8 +24,16 @@ class Ship(Space_Entity, Tick_subjected):
         super().__init__(size=self._hull.size, temperature=self._hull.temperature,
                          accessible_coordinates=self._hull.valid_coordinates)
 
+    @property
+    def current_action_msg(self):
+        try:
+            return self.current_action[0].msg()
+        except AttributeError:
+            return "Nothing"
+
     def __repr__(self):
-        return self._hull.__class__.__name__
+        return self._hull.__class__.__name__ + "(" + self.ai.ai_pourpose() + ")["\
+               + self.current_action_msg + "]"
 
     @property
     def ai(self):
@@ -54,10 +63,24 @@ class Ship(Space_Entity, Tick_subjected):
     def components(self):
         return self._components
 
+    def get_components(self, cat: Category, cls=None):
+        if cls is None:
+            return list(filter(lambda x: x.get_category() == cat, self._components))
+        else:
+            return list(filter(lambda x: x.get_category() == cat and isinstance(x, cls), self._components))
+
+    def has_component(self, cls):
+        for a in self._components:
+            if isinstance(a, cls):
+                return True
+        return False
+
     def add_component(self, component):
-        if len(self._components) + component.size < self._hull.max_components:
+        if len(self._components) + component.get_size() <= self._hull.max_components:
             component.parent = self
             self._components.append(component)
+        else:
+            raise Exception("Not enough space for component")
 
     def rem_component(self, component):
         self._components.remove(component)
@@ -85,7 +108,7 @@ class Ship(Space_Entity, Tick_subjected):
             self._battery -= quantity
 
     def charge_battery(self, quantity):
-        self._battery = min(self._hull.battery, self._battery+quantity)
+        self._battery = min(self._hull.battery, self._battery + quantity)
 
     def begin_tick(self):
         self._ai.begin_tick()

@@ -1,12 +1,15 @@
 from typing import List
 
-from Component import Component
+from Component import Component, Category
 from Space_Entity import Space_Entity
 from Space_System import Space_system
 from Tick_Subjected import Tick_action
 
 
 class Fly(Tick_action):
+
+    def msg(self) -> str:
+        return "Flying"
 
     def __init__(self, ship: Space_Entity, ascend=None, away=None):
         self.ship = ship
@@ -29,6 +32,9 @@ class Warp(Tick_action):
 
 class Flyer(Component):
 
+    def get_category(self):
+        return Category.Propulsion
+
     def get_size(self) -> int:
         return 2
 
@@ -43,6 +49,9 @@ class Flyer(Component):
 
 
 class Warper(Component):
+    def get_category(self):
+        return Category.Propulsion
+
     def get_size(self) -> int:
         return 10
 

@@ -1,8 +1,11 @@
 from PyQt5 import QtWidgets
 import sys
-from Hull_catalog import Ant
+
+from Ai_catalog import Lift
+from Hull_catalog import Ant, Wasp
 from MainView import MainView
 from MainViewWrapper import MainViewWrapper
+from Propulsion_catalog import Flyer
 from Ship import Ship
 from Galaxy import Galaxy
 from Ship_Parts import AI
@@ -12,12 +15,13 @@ app = QtWidgets.QApplication(sys.argv)
 
 g = Galaxy()
 s = g.create_system()
-ship = Ship(AI(), Ant())
+ship = Ship(Lift(), Wasp())
+ship.add_component(Flyer())
 t = Ticker(g)
-t.execute_tick()
 s.enter_system(ship)
 ui = MainViewWrapper()
 ui.show()
 ui.show_systems(g.galaxy_map)
+t.execute_tick()
 
 sys.exit(app.exec_())

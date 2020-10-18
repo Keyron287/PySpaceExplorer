@@ -1,20 +1,32 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 from Tick_Subjected import Tick_subjected
 
 
-class AI(Tick_subjected):
+class AI(ABC):
+
+    def __init__(self):
+        self.ship = None
+
+    @abstractmethod
     def begin_tick(self):
         pass
 
+    @abstractmethod
     def end_tick(self):
         pass
 
+    @abstractmethod
     def on_born(self):
         pass
 
+    @abstractmethod
     def on_death(self):
         pass
+
+    @abstractmethod
+    def ai_pourpose(self):
+        return "No-Action"
 
 
 class Hull(ABC):

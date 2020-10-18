@@ -28,7 +28,8 @@ class Delay(Tick_action):
 class Tick_subjected(ABC):
 
     def __init__(self):
-        self.actions: List[List[Tick_action]] = []
+        self.actions = []
+        self.current_action = None
 
     def add_action(self, action: List[Tick_action], duration: int = 1):
         for a in range(duration-1):
@@ -49,6 +50,7 @@ class Tick_subjected(ABC):
         action = self.actions.pop(0)
         for a in action:
             try:
+                self.current_action = a
                 a.execute()
             except Exception as err:
                 print("Errore:", err)
