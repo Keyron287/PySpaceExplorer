@@ -2,7 +2,7 @@ from random import randrange
 from typing import List
 
 from Celestial_bodies import Star
-from Component import Component
+from Component import Component, Category
 from Resources import Resources, Box_of_metal
 from Space_Entity import Coordinate
 from Tick_Subjected import Tick_action
@@ -84,8 +84,10 @@ class Mover(Component):
 
 class Builder(Component):
 
+    def get_category(self):
+        return Category.Work
+
     def set_project(self, project):
-        super().__init__()
         self.project = project
 
     def get_size(self) -> int:

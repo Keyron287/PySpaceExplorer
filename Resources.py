@@ -13,7 +13,7 @@ class Resources(Enum):
 class Resource_box(Space_Entity):
 
     def __init__(self, base_resource: Resources):
-        super().__init__(self.__class__.__name__, size=1)
+        super().__init__(size=1)
         self.base = base_resource
 
 

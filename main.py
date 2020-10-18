@@ -2,20 +2,27 @@ import sys
 
 from PyQt5 import QtWidgets
 
-from Ai_catalog import Lift
+from Ai_catalog import PlaceHolder
 from Galaxy import Galaxy
-from Hull_catalog import Wasp
+from Hull_catalog import Whale
 from MainViewWrapper import MainViewWrapper
-from Propulsion_catalog import Flyer
 from Ship import Ship
 from Ticker import Ticker
+from Work_catalog import Builder
+
+def starting_factory():
+    f = Ship(PlaceHolder(), Whale())
+    f.add_component(Builder())
+    from Resources import Box_of_metal
+    for a in range(20):
+        f.push_cargo(Box_of_metal())
+    return f
 
 app = QtWidgets.QApplication(sys.argv)
 
 g = Galaxy()
 s = g.create_system()
-factory = Ship(Lift(), Wasp())
-factory.add_component(Flyer())
+factory = starting_factory()
 t = Ticker(g)
 s.enter_system(factory)
 ui = MainViewWrapper(t)

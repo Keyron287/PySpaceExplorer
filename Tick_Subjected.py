@@ -32,7 +32,7 @@ class Tick_subjected(ABC):
         self.current_action = None
 
     def add_action(self, action: List[Tick_action], duration: int = 1):
-        for a in range(duration-1):
+        for a in range(duration - 1):
             self.actions.append([Delay(action[0].msg())])
         self.actions.append(action)
 
@@ -46,14 +46,15 @@ class Tick_subjected(ABC):
     @final
     def tick(self):
         self.begin_tick()
-        action = self.actions.pop(0)
-        for a in action:
-            #try:
-                self.current_action = a
-                a.execute()
-            #except Exception as err:
-             #   print("Errore:", err)
-        self.end_tick()
+        if len(self.actions) > 0:
+            action = self.actions.pop(0)
+            for a in action:
+                try:
+                    self.current_action = a
+                    a.execute()
+                except Exception as err:
+                    print("Error:", err)
+            self.end_tick()
 
     def end_tick(self):
         pass
