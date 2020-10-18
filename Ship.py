@@ -3,7 +3,6 @@ from typing import final, List
 from Component import Component, Category
 from Ship_Parts import AI, Hull
 from Space_Entity import Space_Entity
-from Tick_Subjected import Tick_subjected
 
 
 class Battery_Exception(Exception):
@@ -12,7 +11,7 @@ class Battery_Exception(Exception):
 
 
 @final
-class Ship(Space_Entity, Tick_subjected):
+class Ship(Space_Entity):
 
     def __init__(self, ai, hull):
         self._ai: AI = ai
@@ -24,6 +23,7 @@ class Ship(Space_Entity, Tick_subjected):
         super().__init__(size=self._hull.size, temperature=self._hull.temperature,
                          accessible_coordinates=self._hull.valid_coordinates)
 
+
     @property
     def current_action_msg(self):
         try:
@@ -32,8 +32,7 @@ class Ship(Space_Entity, Tick_subjected):
             return "Nothing"
 
     def __repr__(self):
-        return self._hull.__class__.__name__ + "(" + self.ai.ai_pourpose() + ")["\
-               + self.current_action_msg + "]"
+        return self._hull.__class__.__name__ + "(" + self.ai.ai_pourpose() + ")"
 
     @property
     def ai(self):

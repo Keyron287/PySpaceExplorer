@@ -1,4 +1,7 @@
+from abc import ABC
 from enum import Enum
+
+from Tick_Subjected import Tick_subjected
 
 
 class Coordinate(Enum):
@@ -7,9 +10,10 @@ class Coordinate(Enum):
     Space = 2
 
 
-class Space_Entity:
+class Space_Entity(Tick_subjected, ABC):
 
     def __init__(self, size=0, temperature=0, resources={}, accessible_coordinates=()):
+        super().__init__()
         self.system = None
         self.position = ()
         self.size: int = size

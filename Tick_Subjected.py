@@ -39,7 +39,6 @@ class Tick_subjected(ABC):
     def rem_action(self, action: Tick_action):
         pass
 
-    @abstractmethod
     def begin_tick(self):
         pass
 
@@ -56,14 +55,11 @@ class Tick_subjected(ABC):
                 print("Errore:", err)
         self.end_tick()
 
-    @abstractmethod
     def end_tick(self):
         pass
 
-    @abstractmethod
     def on_born(self):
         pass
 
-    @abstractmethod
     def on_death(self):
         pass

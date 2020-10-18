@@ -11,7 +11,7 @@ class Celestial_body(Space_Entity.Space_Entity):
 
     def __repr__(self):
         name = self.__class__.__name__
-        return name+":"+name[0].upper()+str(self.size)
+        return name+": "+name[0].upper()+str(self.size)
 
 
 class Star(Celestial_body):
