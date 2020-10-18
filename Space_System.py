@@ -1,5 +1,5 @@
 from math import floor
-from random import randrange, random
+from random import randrange, choice, random
 from typing import List, Tuple
 
 from Celestial_bodies import Star, Planet, Moon, Asteroids, Celestial_body
@@ -19,7 +19,7 @@ class Space_system:
         stars = len(list(filter(lambda x: isinstance(x, Star), self.planets)))
         planets = len(list(filter(lambda x: isinstance(x, Planet), self.planets)))
         moons = len(list(filter(lambda x: isinstance(x, Moon), self.planets)))
-        return "System "+str(stars)+str(planets)+str(moons)
+        return "System "+str(stars)+str(planets)+str(moons)+choice(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"])
 
     def __generate(self):
         bodies = randrange(1, 10)
