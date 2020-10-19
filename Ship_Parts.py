@@ -15,14 +15,6 @@ class AI(ABC):
         pass
 
     @abstractmethod
-    def on_born(self):
-        pass
-
-    @abstractmethod
-    def on_death(self):
-        pass
-
-    @abstractmethod
     def ai_pourpose(self):
         return "No-Action"
 

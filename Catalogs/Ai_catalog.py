@@ -14,12 +14,6 @@ class PlaceHolder(AI):
     def end_tick(self):
         pass
 
-    def on_born(self):
-        pass
-
-    def on_death(self):
-        pass
-
     def ai_pourpose(self):
         return "Place holder"
 
@@ -43,12 +37,6 @@ class Lift(AI):
             raise Exception("Cannot move without Flyer")
 
     def end_tick(self):
-        pass
-
-    def on_born(self):
-        pass
-
-    def on_death(self):
         pass
 
     def ai_pourpose(self):

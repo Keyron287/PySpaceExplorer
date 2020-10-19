@@ -1,5 +1,4 @@
 from typing import final, List
-
 from Component import Component, Category
 from Ship_Parts import AI, Hull
 from Space_Entity import Space_Entity
@@ -116,9 +115,3 @@ class Ship(Space_Entity):
 
     def end_tick(self):
         self._ai.end_tick()
-
-    def on_born(self):
-        self._ai.on_born()
-
-    def on_death(self):
-        self._ai.on_death()

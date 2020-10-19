@@ -58,9 +58,3 @@ class Tick_subjected(ABC):
 
     def end_tick(self):
         pass
-
-    def on_born(self):
-        pass
-
-    def on_death(self):
-        pass
