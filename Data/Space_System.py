@@ -2,9 +2,9 @@ from math import floor
 from random import randrange, choice, random
 from typing import List, Tuple
 
-from Celestial_bodies import Star, Planet, Moon, Asteroids, Celestial_body
-from Space_Entity import Coordinate, Space_Entity
-from Tick_Subjected import Tick_subjected
+from Data.Celestial_bodies import Star, Planet, Moon, Asteroids, Celestial_body
+from Data.Space_Entity import Coordinate, Space_Entity
+from Data.Tick_Subjected import Tick_subjected
 
 
 class Space_system:

@@ -1,8 +1,8 @@
 from typing import List
 
-from Component import Component, Category
-from Resources import Resources
-from Tick_Subjected import Tick_action
+from Data.Component import Component, Category
+from Data.Resources import Resources
+from Data.Tick_Subjected import Tick_action
 
 
 class Scan_connections(Tick_action):

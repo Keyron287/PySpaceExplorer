@@ -1,6 +1,6 @@
 from enum import Enum
 
-from Space_Entity import Space_Entity
+from Data.Space_Entity import Space_Entity
 
 
 class Resources(Enum):

@@ -1,6 +1,6 @@
 from abc import ABC
 
-from Space_Entity import Coordinate
+from Data.Space_Entity import Coordinate
 
 
 class Hull(ABC):

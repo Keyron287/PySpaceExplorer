@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets
 
-from MainView import Ui_MainWindow
-from Space_Entity import Coordinate
+from Data.MainView import Ui_MainWindow
+from Data.Space_Entity import Coordinate
 
 
 class MainViewWrapper:

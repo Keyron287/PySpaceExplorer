@@ -1,7 +1,7 @@
 from typing import final, List
-from Component import Component, Category
+from Data.Component import Component, Category
 from Ship_Parts import AI, Hull
-from Space_Entity import Space_Entity
+from Data.Space_Entity import Space_Entity
 
 
 class Battery_Exception(Exception):

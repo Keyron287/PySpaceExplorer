@@ -1,7 +1,7 @@
 from random import randrange
 from typing import List
 
-import Space_System
+from Data import Space_System
 
 
 class Galaxy:

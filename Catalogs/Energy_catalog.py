@@ -1,11 +1,11 @@
 from typing import List
 
-from Celestial_bodies import Star, Celestial_body
-from Component import Component, Category
-from Resources import Resources
-from Space_Entity import Coordinate
-from Space_System import Space_system
-from Tick_Subjected import Tick_action
+from Data.Celestial_bodies import Star, Celestial_body
+from Data.Component import Component, Category
+from Data.Resources import Resources
+from Data.Space_Entity import Coordinate
+from Data.Space_System import Space_system
+from Data.Tick_Subjected import Tick_action
 
 
 class Transfer_energy(Tick_action):

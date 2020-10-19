@@ -1,11 +1,11 @@
 from random import randrange
 from typing import List
 
-from Celestial_bodies import Star
-from Component import Component, Category
-from Resources import Resources, Box_of_metal
-from Space_Entity import Coordinate
-from Tick_Subjected import Tick_action
+from Data.Celestial_bodies import Star
+from Data.Component import Component, Category
+from Data.Resources import Resources, Box_of_metal
+from Data.Space_Entity import Coordinate
+from Data.Tick_Subjected import Tick_action
 
 
 class Extract_metal(Tick_action):

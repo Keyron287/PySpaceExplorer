@@ -1,8 +1,8 @@
 from typing import List
 
-from Component import Category
+from Data.Component import Category
 from Catalogs.Propulsion_catalog import Flyer
-from Space_Entity import Coordinate
+from Data.Space_Entity import Coordinate
 
 from abc import ABC, abstractmethod
 

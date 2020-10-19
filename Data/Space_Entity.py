@@ -1,7 +1,7 @@
 from abc import ABC
 from enum import Enum
 
-from Tick_Subjected import Tick_subjected
+from Data.Tick_Subjected import Tick_subjected
 
 
 class Coordinate(Enum):
