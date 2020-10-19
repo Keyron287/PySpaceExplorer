@@ -2,8 +2,27 @@ from typing import List
 
 from Component import Category
 from Catalogs.Propulsion_catalog import Flyer
-from Ship_Parts import AI
 from Space_Entity import Coordinate
+
+from abc import ABC, abstractmethod
+
+
+class AI(ABC):
+
+    def __init__(self):
+        self.ship = None
+
+    @abstractmethod
+    def begin_tick(self):
+        pass
+
+    @abstractmethod
+    def end_tick(self):
+        pass
+
+    @abstractmethod
+    def ai_pourpose(self):
+        return "No-Action"
 
 
 class PlaceHolder(AI):

@@ -1,5 +1,17 @@
-from Ship_Parts import Hull
+from abc import ABC
+
 from Space_Entity import Coordinate
+
+
+class Hull(ABC):
+
+    def __init__(self, size, max_components, max_cargo, valid_coordinates, battery, temperature):
+        self.size = size
+        self.max_components = max_components
+        self.max_cargo = max_cargo
+        self.valid_coordinates = valid_coordinates
+        self.battery = battery
+        self.temperature = temperature
 
 
 class Ant(Hull):
