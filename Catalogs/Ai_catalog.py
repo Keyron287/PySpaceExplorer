@@ -1,10 +1,9 @@
+from abc import ABC, abstractmethod
 from typing import List
 
-from Data.Component import Category
 from Catalogs.Propulsion_catalog import Flyer
+from Data.Component import Category
 from Data.Space_Entity import Coordinate
-
-from abc import ABC, abstractmethod
 
 
 class AI(ABC):

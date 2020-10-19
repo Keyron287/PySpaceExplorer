@@ -1,6 +1,8 @@
 from typing import final, List
+
+from Catalogs.Ai_catalog import AI
+from Catalogs.Hull_catalog import Hull
 from Data.Component import Component, Category
-from Ship_Parts import AI, Hull
 from Data.Space_Entity import Space_Entity
 
 
