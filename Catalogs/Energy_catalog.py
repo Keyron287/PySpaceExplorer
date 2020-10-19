@@ -1,7 +1,7 @@
 from typing import List
 
 from Celestial_bodies import Star, Celestial_body
-from Component import Component
+from Component import Component, Category
 from Resources import Resources
 from Space_Entity import Coordinate
 from Space_System import Space_system
@@ -15,6 +15,9 @@ class Transfer_energy(Tick_action):
         self.target = target_ship
         self.charge = charge
 
+    def msg(self) -> str:
+        return "Transfering energy"
+
     def execute(self):
         self.origin.use_battery(self.charge)
         self.target.charge_battery(self.charge)
@@ -26,6 +29,9 @@ class Charge_battery(Tick_action):
         self.ship = target_ship
         self.charge = charge
 
+    def msg(self) -> str:
+        return "Charging battery"
+
     def execute(self):
         self.ship.charge_battery(self.charge)
 
@@ -34,6 +40,12 @@ class Power_Bank(Component):
     def __init__(self):
         super().__init__()
         self.energy = 10
+
+    def get_category(self):
+        return Category.Energy
+
+    def get_duration(self) -> int:
+        return 1
 
     def get_size(self) -> int:
         return 1
@@ -54,6 +66,12 @@ class Plug(Component):
         super().__init__()
         self.energy_tranfer = 5
 
+    def get_category(self):
+        return Category.Energy
+
+    def get_duration(self) -> int:
+        return 2
+
     def get_size(self) -> int:
         return 1
 
@@ -68,6 +86,12 @@ class Plug(Component):
 
 
 class Solar_panel(Component):
+
+    def get_category(self):
+        return Category.Energy
+
+    def get_duration(self) -> int:
+        return 5
 
     def calculate_output(self, system: Space_system):
         ll = 0
@@ -88,6 +112,12 @@ class Solar_panel(Component):
 
 
 class Thermoelectric_generator(Component):
+
+    def get_category(self):
+        return Category.Energy
+
+    def get_duration(self) -> int:
+        return 10
 
     def calculate_output(self, coord: tuple):
         body: Celestial_body = coord[0]

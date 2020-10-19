@@ -1,7 +1,7 @@
 from typing import List
 
-from Celestial_bodies import Resources
-from Component import Component
+from Component import Component, Category
+from Resources import Resources
 from Tick_Subjected import Tick_action
 
 
@@ -10,6 +10,9 @@ class Scan_connections(Tick_action):
     def __init__(self, ship, component):
         self.system = ship.system
         self.component = component
+
+    def msg(self) -> str:
+        return "Scanning for other systems"
 
     def execute(self):
         self.component.scanned = self.system.connections
@@ -22,6 +25,9 @@ class Scan_sectior(Tick_action):
         self.position = position or self.ship.position
         self.component = component
 
+    def msg(self) -> str:
+        return "Scan for entities"
+
     def execute(self):
         self.component.scanned = self.system.get_sector_entities(self.position, exclude=self.ship)
 
@@ -32,15 +38,24 @@ class Scan_Metal(Tick_action):
         self.target = target
         self.component = component
 
+    def msg(self) -> str:
+        return "Scan for metal"
+
     def execute(self):
         self.component.scanned = self.target.resources[Resources.Metal]
 
 
 class Telescope(Component):
 
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self):
+        super().__init__()
         self.scanned = []
+
+    def get_category(self):
+        return Category.Sensor
+
+    def get_duration(self) -> int:
+        return 5
 
     def get_size(self) -> int:
         return 3
@@ -54,9 +69,15 @@ class Telescope(Component):
 
 class Lidar(Component):
 
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self):
+        super().__init__()
         self.scanned = []
+
+    def get_category(self):
+        return Category.Sensor
+
+    def get_duration(self) -> int:
+        return 2
 
     def get_size(self) -> int:
         return 2
@@ -70,9 +91,15 @@ class Lidar(Component):
 
 class Metal_detector(Component):
 
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self):
+        super().__init__()
         self.scanned = []
+
+    def get_category(self):
+        return Category.Sensor
+
+    def get_duration(self) -> int:
+        return 4
 
     def get_size(self) -> int:
         return 2

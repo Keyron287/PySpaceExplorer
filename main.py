@@ -1,7 +1,5 @@
 import sys
-
 from PyQt5 import QtWidgets
-
 from Catalogs.Ai_catalog import PlaceHolder
 from Galaxy import Galaxy
 from Catalogs.Hull_catalog import Whale

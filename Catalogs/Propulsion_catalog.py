@@ -26,6 +26,9 @@ class Warp(Tick_action):
         self.ship = ship
         self.destination = destination
 
+    def msg(self) -> str:
+        return "Warping"
+
     def execute(self):
         self.destination.enter_system(self.ship)
 

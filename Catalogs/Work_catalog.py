@@ -10,6 +10,9 @@ from Tick_Subjected import Tick_action
 
 class Extract_metal(Tick_action):
 
+    def msg(self) -> str:
+        return "Extracting metal"
+
     def __init__(self, ship, planet, power):
         self.ship = ship
         self.planet = planet
@@ -32,6 +35,9 @@ class Extract_metal(Tick_action):
 
 class Move_cargo(Tick_action):
 
+    def msg(self) -> str:
+        return "Moving cargo"
+
     def __init__(self, origin, target):
         self.transfer = None
         self.origin = origin
@@ -44,6 +50,9 @@ class Move_cargo(Tick_action):
 
 class Build_ship(Tick_action):
 
+    def msg(self) -> str:
+        return "Moving cargo"
+
     def __init__(self, ship, project):
         self.ship = ship
         self.project = project
@@ -55,6 +64,12 @@ class Build_ship(Tick_action):
 
 
 class Drill(Component):
+
+    def get_category(self):
+        return Category.Work
+
+    def get_duration(self) -> int:
+        return 1
 
     def __init__(self, power):
         super().__init__()
@@ -71,6 +86,12 @@ class Drill(Component):
 
 
 class Mover(Component):
+
+    def get_category(self):
+        return Category.Work
+
+    def get_duration(self) -> int:
+        return 1
 
     def get_size(self) -> int:
         return 1
