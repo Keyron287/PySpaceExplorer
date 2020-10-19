@@ -2,13 +2,14 @@ import sys
 
 from PyQt5 import QtWidgets
 
-from Ai_catalog import PlaceHolder
+from Catalogs.Ai_catalog import PlaceHolder
 from Galaxy import Galaxy
-from Hull_catalog import Whale
+from Catalogs.Hull_catalog import Whale
 from MainViewWrapper import MainViewWrapper
 from Ship import Ship
 from Ticker import Ticker
-from Work_catalog import Builder
+from Catalogs.Work_catalog import Builder
+
 
 def starting_factory():
     f = Ship(PlaceHolder(), Whale())
@@ -17,6 +18,7 @@ def starting_factory():
     for a in range(20):
         f.push_cargo(Box_of_metal())
     return f
+
 
 app = QtWidgets.QApplication(sys.argv)
 

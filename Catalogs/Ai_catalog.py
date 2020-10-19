@@ -1,7 +1,7 @@
 from typing import List
 
 from Component import Category
-from Propulsion_catalog import Flyer
+from Catalogs.Propulsion_catalog import Flyer
 from Ship_Parts import AI
 from Space_Entity import Coordinate
 
