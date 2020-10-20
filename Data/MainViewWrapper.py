@@ -1,3 +1,7 @@
+"""
+Contiene il wrapper dell'interfaccia grafica
+"""
+
 from PyQt5 import QtWidgets
 
 from Data.MainView import Ui_MainWindow
@@ -13,11 +17,13 @@ class MainViewWrapper:
         self.ticker = ticker
 
     def show(self):
+        """Visualizza l'interfaccia"""
         self.mv.setupUi(self.MainWindow)
         self.__connectUi()
         self.MainWindow.show()
 
     def __connectUi(self):
+        """Genera le connessioni per le interazioni con l'interfaccia"""
         self.mv.Systems.currentRowChanged.connect(lambda: self.show_planets())
         self.mv.Planets.currentRowChanged.connect(lambda: self.show_space())
         self.mv.Planets.currentRowChanged.connect(lambda: self.show_orbit())
@@ -33,6 +39,7 @@ class MainViewWrapper:
         return self.selected_system.planets[self.mv.Planets.currentRow()]
 
     def __show_list(self, lst_widget, lst):
+        """Inserisce la lista nel lst_widget"""
         lst_widget.clear()
         for ls in lst:
             item = QtWidgets.QListWidgetItem()
@@ -40,6 +47,7 @@ class MainViewWrapper:
             lst_widget.addItem(item)
 
     def tick(self):
+        """Esegue esegue un tick ed aggiorna l'interfaccia"""
         last_system = self.mv.Systems.currentRow()
         last_planet = self.mv.Planets.currentRow()
         self.ticker.execute_tick()
@@ -52,21 +60,26 @@ class MainViewWrapper:
         self.show_land()
 
     def show_systems(self, systems=None):
+        """Aggiorna la lista dei sistemi"""
         self.map = systems or self.map
         self.__show_list(self.mv.Systems, self.map)
 
     def show_planets(self):
+        """Aggiorna la lista dei pianeti"""
         planets = self.map[self.mv.Systems.currentRow()].planets
         self.__show_list(self.mv.Planets, planets)
 
     def show_space(self):
+        """Aggiorna la lista delle unità nello spazio"""
         space = self.selected_system.get_sector_entities((self.selected_planet, Coordinate.Space))
         self.__show_list(self.mv.Space, space)
 
     def show_orbit(self):
+        """Aggiorna la lista delle unità in orbita"""
         orbit = self.selected_system.get_sector_entities((self.selected_planet, Coordinate.Orbit))
         self.__show_list(self.mv.Orbit, orbit)
 
     def show_land(self):
+        """Aggiorna la lista delle unità a terra"""
         land = self.selected_system.get_sector_entities((self.selected_planet, Coordinate.Landed))
         self.__show_list(self.mv.Landed, land)

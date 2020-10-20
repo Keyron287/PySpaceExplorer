@@ -1,3 +1,8 @@
+"""
+Main del programma
+"""
+
+
 import sys
 from PyQt5 import QtWidgets
 from Catalogs.Ai_catalog import PlaceHolder
@@ -9,8 +14,14 @@ from Data.Ticker import Ticker
 from Catalogs.Work_catalog import Builder
 
 
-def starting_factory():
-    f = Ship(PlaceHolder(), Whale())
+def starting_factory(ai):
+    """
+    Crea la prima costruzione del giocatore
+
+    :param ai: La ai della prima factory
+    :return: Nave modello Whale con factory e venti unità di metallo
+    """
+    f = Ship(ai, Whale())
     f.add_component(Builder())
     from Data.Resources import Box_of_metal
     for a in range(20):
@@ -22,7 +33,7 @@ app = QtWidgets.QApplication(sys.argv)
 
 g = Galaxy()
 s = g.create_system()
-factory = starting_factory()
+factory = starting_factory(PlaceHolder())
 t = Ticker(g)
 s.enter_system(factory)
 ui = MainViewWrapper(t)

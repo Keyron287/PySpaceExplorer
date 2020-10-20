@@ -1,5 +1,9 @@
-from random import randrange
+"""
+Contiene la classe Celestial_body che descrive un corpo celeste
+e tutte le classi figlie: Star, Planet, Moon, Asteroids
+"""
 
+from random import randrange
 from Data import Space_Entity
 
 

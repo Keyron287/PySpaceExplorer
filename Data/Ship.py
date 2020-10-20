@@ -1,5 +1,8 @@
-from typing import final, List
+"""
+Classe Ship
+"""
 
+from typing import final, List
 from Catalogs.Ai_catalog import AI
 from Catalogs.Hull_catalog import Hull
 from Data.Component import Component, Category
@@ -10,7 +13,7 @@ class Battery_Exception(Exception):
     def __init__(self, message):
         super().__init__(message)
 
-
+# final non fa estendere la classe
 @final
 class Ship(Space_Entity):
 

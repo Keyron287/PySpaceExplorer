@@ -4,6 +4,7 @@ from Data.Space_Entity import Space_Entity
 
 
 class Resources(Enum):
+    """Elenco dei tipi di risorse"""
     Light = 0
     Metal = 1
     Energy = 2
@@ -11,7 +12,7 @@ class Resources(Enum):
 
 
 class Resource_box(Space_Entity):
-
+    """Unità materiale di risorsa, sotto forma di Box. Derivata da Space_Entity"""
     def __init__(self, base_resource: Resources):
         super().__init__(size=1)
         self.base = base_resource
