@@ -1,3 +1,7 @@
+"""
+Lo space system contiene tutte le space entityes
+"""
+
 from math import floor
 from random import randrange, choice, random
 from typing import List, Tuple

@@ -1,3 +1,8 @@
+"""
+La classe ship_project crea è la "ricetta" che, caricata sul componente builder
+spawna una nave spendendo il relativo costo
+"""
+
 from abc import ABC, abstractmethod
 
 
