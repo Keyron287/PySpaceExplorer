@@ -14,15 +14,11 @@ from Data.Tick_Subjected import Tick_subjected
 class Space_system:
 
     def __init__(self):
+        self.name = "System"
         self.planets = []
         self.entities = []
         self.connections = []
         self.__generate()
-        stars = len(list(filter(lambda x: isinstance(x, Star), self.planets)))
-        planets = len(list(filter(lambda x: isinstance(x, Planet), self.planets)))
-        moons = len(list(filter(lambda x: isinstance(x, Moon), self.planets)))
-        self.name = "System " + str(stars) + str(planets) + str(moons) + choice(
-            ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"])
 
     def __repr__(self):
         return self.name
@@ -30,19 +26,29 @@ class Space_system:
     def __generate(self):
         bodies = randrange(1, 10)
 
+        stars = 0
+        planets = 0
+        moons = 0
+
         for a in range(bodies):
             gauss = (random() + random()) / 2
             gauss = floor(gauss * 3.99)
             b = None
             if gauss == 0 or a == 0:
                 b = Star()
+                stars += 1
             elif gauss == 1:
                 b = Planet()
+                planets += 1
             elif gauss == 2:
                 b = Moon()
+                moons += 1
             elif gauss == 3:
                 b = Asteroids()
             self.planets.append(b)
+
+        self.name += str(stars) + str(planets) + str(moons) + choice(
+            ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"])
 
     def enter_system(self, entity: Space_Entity, position: tuple = None):
         if entity.system is not None:

@@ -5,7 +5,7 @@ La classe Ticker recupera tutti gli oggetti tick subjected e gli fa eseguire un 
 
 class Ticker:
     """
-    Fa eseguire un tick a tutte le operazioni della
+    Fa eseguire un tick a tutte le entity della galassia
     """
 
     def __init__(self, galaxy):
